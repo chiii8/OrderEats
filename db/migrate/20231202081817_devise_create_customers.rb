@@ -33,8 +33,8 @@ class DeviseCreateCustomers < ActiveRecord::Migration[6.1]
       # t.datetime :locked_at
       t.string :last_name, null: false
       t.string :first_name, null: false
-      t.string :last_name_kanam, null: false
-      t.string :fisrt_name_kana, null: false
+      t.string :last_name_kana, null: false
+      t.string :first_name_kana, null: false
       t.string :telephone_number, null: false
       t.integer :gender, null: false, default: 0
       t.integer :birth_date, null: false

@@ -40,8 +40,8 @@ ActiveRecord::Schema.define(version: 2023_12_03_140708) do
     t.datetime "remember_created_at"
     t.string "last_name", null: false
     t.string "first_name", null: false
-    t.string "last_name_kanam", null: false
-    t.string "fisrt_name_kana", null: false
+    t.string "last_name_kana", null: false
+    t.string "first_name_kana", null: false
     t.string "telephone_number", null: false
     t.integer "gender", default: 0, null: false
     t.integer "birth_date", null: false
