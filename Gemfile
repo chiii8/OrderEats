@@ -60,3 +60,5 @@ gem 'devise'
 gem 'kaminari','~> 1.2.1'
 # 検索機能
 gem 'ransack'
+# enum
+gem "enum_help"

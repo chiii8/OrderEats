@@ -1,10 +1,10 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-6">
-      <h4>新規会員登録</h4>
+    <div class="col-md-12">
+      <h4 class="text-center mb-5">新規会員登録</h4>
     </div>
     <div class="row">
-      <div class="col-md-10">
+      <div class="col-md-12">
         <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
           <%= render "public/shared/error_messages", resource: resource %>
           <table class="table table-borderless">
@@ -24,19 +24,26 @@
               <tr>
                 <td>メールアドレス</td>
                 <td>
-                  <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+                  <%= f.email_field :email, autofocus: true, autocomplete: "email", size: 43 %>
                 </td>
               </tr>
               <tr>
                 <td>生年月日</td>
                 <td>
-                  
+                  <%= f.date_select :birth_date, {start_year: 1950, end_yaer: 2023,
+                  include_blank: true, use_two_digit_numbers: true},
+                  {class: "input-tab birth_date-select"} %>
                 </td>
               </tr>
               <tr>
                 <td>性別</td>
                 <td>
-                  
+                  <%= f.radio_button :gender, Customer.genders.key(0) %>
+                  <%= f.label :gender_male, Customer.genders_i18n[:male], class: 'mr-3' %>
+                  <%= f.radio_button :gender, Customer.genders.key(1) %>
+                  <%= f.label :gender_female, Customer.genders_i18n[:female], class: 'mr-3' %>
+                  <%= f.radio_button :gender, Customer.genders.key(2) %>
+                  <%= f.label :gender_no_answer, Customer.genders_i18n[:no_answer] %>
                 </td>
               </tr>
               <tr>
@@ -52,7 +59,7 @@
                 </td>
               </tr>
               <tr>
-                <td><%= f.submit "新規登録", class: 'btn btn-success pl-5 pr-5 pt-2 pb-2' %></td>
+                <td><%= f.submit "新規登録", class: 'btn btn-success pl-5 pr-5 pt-1 pb-1' %></td>
               </tr>
             </tbody>
           </table>
