@@ -1,10 +1,12 @@
 <div class="container">
   <div class="row">
     <div class="col-md-12">
+      <br>
+      <br>
       <h4 class="text-center mb-5">新規会員登録</h4>
     </div>
     <div class="row">
-      <div class="col-md-12">
+      <div class="col-md-12 offset-6">
         <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
           <%= render "public/shared/error_messages", resource: resource %>
           <table class="table table-borderless">
@@ -12,27 +14,26 @@
               <tr>
                 <td>名前</td>
                 <td>
-                  <%= f.text_field :last_name %> <%= f.text_field :first_name %>
+                  <%= f.text_field :last_name, :placeholder => "姓" %> <%= f.text_field :first_name, :placeholder => "名" %>
                 </td>
               </tr>
               <tr>
                 <td>フリガナ</td>
                 <td>
-                  <%= f.text_field :last_name_kana %> <%= f.text_field :first_name_kana %>
+                  <%= f.text_field :last_name_kana, :placeholder => "セイ" %> <%= f.text_field :first_name_kana, :placeholder => "メイ" %>
                 </td>
               </tr>
               <tr>
                 <td>メールアドレス</td>
                 <td>
-                  <%= f.email_field :email, autofocus: true, autocomplete: "email", size: 43 %>
+                  <%= f.email_field :email, autofocus: true, autocomplete: "email", size: 43, :placeholder => "aaa@gmail.com" %>
                 </td>
               </tr>
               <tr>
                 <td>生年月日</td>
                 <td>
                   <%= f.date_select :birth_date, {start_year: 1950, end_yaer: 2023,
-                  include_blank: true, use_two_digit_numbers: true},
-                  {class: "input-tab birth_date-select"} %>
+                  include_blank: true, use_two_digit_numbers: true}, class: "input-tab birth_date-select pr-5 text-center" %>
                 </td>
               </tr>
               <tr>
@@ -49,16 +50,17 @@
               <tr>
                 <td>パスワード</td>
                 <td>
-                  <%= f.password_field :password %>
+                  <%= f.password_field :password, size: 30, :placeholder => "パスワード(６文字以上)" %>
                 </td>
               </tr>
               <tr>
                 <td>パスワード(確認用)</td>
                 <td>
-                  <%= f.password_field :password_confimation %>
+                  <%= f.password_field :password_confimation, size: 30, :placeholder => "パスワード(確認用)" %>
                 </td>
               </tr>
               <tr>
+                <td></td>
                 <td><%= f.submit "新規登録", class: 'btn btn-success pl-5 pr-5 pt-1 pb-1' %></td>
               </tr>
             </tbody>
