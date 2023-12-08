@@ -30,10 +30,9 @@
                 </td>
               </tr>
               <tr>
-                <td>生年月日</td>
+                <td>電話番号</td>
                 <td>
-                  <%= f.date_select :birth_date, {start_year: 1950, end_yaer: 2023,
-                  include_blank: true, use_two_digit_numbers: true}, class: "input-tab birth_date-select pr-5 text-center" %>
+                  <%= f.text_field :telephone_number, size: 30, :placeholder => "00000000000" %>
                 </td>
               </tr>
               <tr>

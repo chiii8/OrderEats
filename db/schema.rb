@@ -44,8 +44,7 @@ ActiveRecord::Schema.define(version: 2023_12_03_140708) do
     t.string "first_name_kana", null: false
     t.string "telephone_number", null: false
     t.integer "gender", default: 0, null: false
-    t.integer "birth_date", null: false
-    t.boolean "is_active", null: false
+    t.boolean "is_active", default: true, null: false
     t.integer "useing_status", default: 0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
