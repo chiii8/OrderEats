@@ -1,0 +1,2 @@
+module Store::RestaurantsHelper
+end

@@ -3,20 +3,11 @@
     <ul class="logo_area justify-content-start">
       <li class="navbar-brand">
         <%= link_to root_path, class: "nav-link" do %>
-          あ
+          <%= image_tag 'logo.jpg', class: 'logo', :size => '100x100' %>
         <% end %>
       </li>
     </ul>
     <ul class="navbar-nav justify-content-end">
-      <li class="nav-item mr-3">
-          <%= link_to "商品一覧", admin_items_path, class: "nav-link text-dark" %>
-      </li>
-      <li class="nav-item mr-3">
-        <%= link_to "会員一覧", admin_customers_path, class: "nav-link text-dark" %>
-      </li>
-      <li class="nav-item mr-3">
-        <%= link_to "注文履歴一覧", admin_orders_path, class: "nav-link text-dark" %>
-      </li>
       <li class="nav-item">
         <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "nav-link text-dark" %>
       </li>

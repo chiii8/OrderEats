@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  # 店舗用
+  devise_for :stores, skip: [:passwords], controllers: {
+    registrations: "store/registrations",
+    sessions: "store/sessions"
+  }
   # 顧客用
   devise_for :customers, skip: [:passwords], controllers: {
     registrations: "public/registrations",
@@ -9,13 +14,17 @@ Rails.application.routes.draw do
     sessions: "admin/sessions"
   }
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  # 管理者側
-  namespace :admin do
+  # 店舗側
+  namespace :store do
+    resources :restaurants
     resources :items, except: [:destroy]
     resources :orders, only: [:show, :update]
     resources :order_details, only: [:update]
     resources :customers, only: [:index, :show, :edit, :update]
-    
+  end
+  # 管理者側
+  namespace :admin do
+    resources :restaurants, only: [:index, :show]
     get 'admin', to: 'admin/home#top'
   end
   # 顧客側
@@ -35,8 +44,9 @@ Rails.application.routes.draw do
       get 'orders/possible' => 'orders#possible', as: "possible"
       get 'orders/production' => 'orders#production', as: "prodction"
       get 'orders/review' => 'orders#review', as: "review"
+    resources :restaurants, only: [:index, :show]
       
       root to: 'homes#top'
       get '/about' => 'homes#about'
-  end
+    end
 end
