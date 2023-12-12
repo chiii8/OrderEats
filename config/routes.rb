@@ -1,31 +1,29 @@
 Rails.application.routes.draw do
-  # 店舗用
-  devise_for :stores, skip: [:passwords], controllers: {
-    registrations: "store/registrations",
-    sessions: "store/sessions"
-  }
-  # 顧客用
-  devise_for :customers, skip: [:passwords], controllers: {
-    registrations: "public/registrations",
-    sessions: "public/sessions"
-  }
-  # 管理者用
-  devise_for :admins, skip: [:registration, :passwords], controllers: {
-    sessions: "admin/sessions"
-  }
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  devise_for :admins, skip: [:registrations, :passwords], controllers: {
+        sessions: "admin/sessions",
+      }
+  devise_for :stores, skip: [:passwords], controllers: {
+      registration: "store/registrations",
+      sessions: "store/sessions"
+    }
+  devise_for :customers, skip: [:passwords], controllers: {
+      registrations: "public/registrations",
+      sessions: "public/sessions"
+    }
   # 店舗側
   namespace :store do
-    resources :restaurants
-    resources :items, except: [:destroy]
+    resources :restaurants do
+      resources :items
+    end
     resources :orders, only: [:show, :update]
     resources :order_details, only: [:update]
     resources :customers, only: [:index, :show, :edit, :update]
   end
   # 管理者側
   namespace :admin do
-    resources :restaurants, only: [:index, :show]
-    get 'admin', to: 'admin/home#top'
+    resources :restaurants, only: [:index, :show, :create]
+    get '/', to: 'admin/home#top'
   end
   # 顧客側
   scope module: :public do
@@ -45,8 +43,7 @@ Rails.application.routes.draw do
       get 'orders/production' => 'orders#production', as: "prodction"
       get 'orders/review' => 'orders#review', as: "review"
     resources :restaurants, only: [:index, :show]
-      
-      root to: 'homes#top'
-      get '/about' => 'homes#about'
-    end
+    root to: 'homes#top'
+    get '/about' => 'homes#about'
+  end
 end
