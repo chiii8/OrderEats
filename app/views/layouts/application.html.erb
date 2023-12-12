@@ -5,20 +5,34 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1">
-
+    
+    <script src="https://kit.fontawesome.com/81e1251ca7.js" crossorigin="anonymous"></script>
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
+  <body class="d-flex flex-column vh-100">
     <header>
-      <% if customer_signed_in? %>
-        <%= render 'layouts/header_customer' %>
-      <% elsif admin_signed_in? %>
-        <%= render 'layouts/header_admin' %>
-      <% else %>
-        <%= render 'layouts/header_before' %>
-      <% end %>
+      <nav class="navbar navbar-expand-lg. navbar-light">
+        <div class="container">
+          <a class="navbar-brand p-3" href="/"><%= image_tag 'logo.JPG', :size => "100×100" %></a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+                        aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav ml-auto">
+              <% if customer_signed_in? %>
+                <%= render 'layouts/header_customer' %>
+              <% elsif admin_signed_in? %>
+                <%= render 'layouts/header_admin' %>
+              <% else %>
+                <%= render 'layouts/header_before' %>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      </nav>
     </header>
     <main>
       <% flash.each do |messege_type, messege| %>
