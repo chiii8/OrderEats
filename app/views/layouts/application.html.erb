@@ -15,7 +15,7 @@
     <header>
       <nav class="navbar navbar-expand-lg. navbar-light">
         <div class="container">
-          <a class="navbar-brand p-3" href="/"><%= image_tag 'logo.JPG', :size => "100×100" %></a>
+          <a class="navbar-brand p-3" href="/"><%= image_tag('logo.PNG', size: "80x80") %></a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
                         aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -26,6 +26,8 @@
                 <%= render 'layouts/header_customer' %>
               <% elsif admin_signed_in? %>
                 <%= render 'layouts/header_admin' %>
+              <% elsif store_signed_in? %>
+                <%= render 'layouts/header_store' %>
               <% else %>
                 <%= render 'layouts/header_before' %>
               <% end %>
