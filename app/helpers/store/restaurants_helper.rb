@@ -1,2 +1,0 @@
-module Store::RestaurantsHelper
-end

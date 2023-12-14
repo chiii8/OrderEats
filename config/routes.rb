@@ -13,7 +13,7 @@ Rails.application.routes.draw do
     }
   # 店舗側
   namespace :store do
-    resources :restaurants do
+    resources :stores do
       resources :items
     end
     resources :orders, only: [:show, :update]
@@ -22,7 +22,7 @@ Rails.application.routes.draw do
   end
   # 管理者側
   namespace :admin do
-    resources :restaurants, only: [:index, :show, :create]
+    resources :stores, only: [:index, :show, :create]
     get '/', to: 'admin/home#top'
   end
   # 顧客側
@@ -42,7 +42,7 @@ Rails.application.routes.draw do
       get 'orders/possible' => 'orders#possible', as: "possible"
       get 'orders/production' => 'orders#production', as: "prodction"
       get 'orders/review' => 'orders#review', as: "review"
-    resources :restaurants, only: [:index, :show]
+    resources :stores, only: [:index, :show]
     root to: 'homes#top'
     get '/about' => 'homes#about'
   end
