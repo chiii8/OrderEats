@@ -3,6 +3,7 @@ class Store::ItemsController < ApplicationController
   
   def index
     @items = Item.all
+    @store = current_store
   end
   
   def new

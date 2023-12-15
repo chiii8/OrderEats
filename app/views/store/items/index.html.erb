@@ -1,5 +1,33 @@
 <div class="container">
   <div class="row">
-    
+    <div class="col-lg-2">
+      <h6><strong><%= @store.name %></strong>商品一覧</h6>
+    </div>
+    <div class="col">
+      <%= link_to new_store_store_item_path do %>
+        <button type="button" class="btn btn-dark rounded-circle p-0" style="width:2rem;height:2rem;">+</button>
+      <% end %>
+    </div>
+  </div>
+  <div class="row">
+    <% @items.each do |item| %>
+      <div class="col-lg-3">
+        <%= link_to store_store_item_path(@store, item), class: 'text-dark' do %>
+          <%= image_tag item.get_image(100, 100) %>
+        <% end %>
+      </div>
+      <div class="col-lg-2">
+        <p><strong><%= item.name %></strong></p>
+        <p><%= item.introduction %></p>
+        <p>¥<%= item.price %></p>
+        <p>
+          <% if item.is_active %>
+            <p class="text-success"><strong>販売中</strong></p>
+          <% else %>
+            <p class="text-danger"><strong>販売停止中</strong></p>
+          <% end %>
+        </p>
+      </div>
+    <% end %>
   </div>
 </div>
