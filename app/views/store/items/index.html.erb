@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
-    <div class="col-lg-2">
-      <h6><strong><%= @store.name %></strong>商品一覧</h6>
+    <div class="col-lg-2 mb-5">
+      <h6><strong><%= @store.name %></strong> 商品一覧</h6>
     </div>
     <div class="col">
       <%= link_to new_store_store_item_path do %>
@@ -9,11 +9,11 @@
       <% end %>
     </div>
   </div>
-  <div class="row">
+  <div class="row mb-5">
     <% @items.each do |item| %>
-      <div class="col-lg-3">
-        <%= link_to store_store_item_path(@store, item), class: 'text-dark' do %>
-          <%= image_tag item.get_image(100, 100) %>
+      <div class="col-lg-2">
+        <%= link_to store_store_item_path(@store, item) do %>
+          <%= image_tag item.get_image(170, 170) %>
         <% end %>
       </div>
       <div class="col-lg-2">
@@ -22,12 +22,13 @@
         <p>¥<%= item.price %></p>
         <p>
           <% if item.is_active %>
-            <p class="text-success"><strong>販売中</strong></p>
+            <span class="text-success"><strong>販売中</strong></span>
           <% else %>
-            <p class="text-danger"><strong>販売停止中</strong></p>
+            <span class="text-danger"><strong>販売停止中</strong></span>
           <% end %>
         </p>
       </div>
     <% end %>
   </div>
 </div>
+<%= paginate @items %>
