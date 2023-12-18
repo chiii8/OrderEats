@@ -27,7 +27,9 @@ Rails.application.routes.draw do
   end
   # 顧客側
   scope module: :public do
-    resources :items, only: [:index, :show]
+    resources :stores, only: [:index, :show] do
+      resources :items, only: [:index, :show]
+    end
     resources :customers, only: [:update]
       get '/customers/withdraw_confirm' => 'customers#withdraw_confirm', as: "withdraw_confirm"
       patch '/customers/withdraw' => 'customers#withdraw'
@@ -42,7 +44,6 @@ Rails.application.routes.draw do
       get 'orders/possible' => 'orders#possible', as: "possible"
       get 'orders/production' => 'orders#production', as: "prodction"
       get 'orders/review' => 'orders#review', as: "review"
-    resources :stores, only: [:index, :show]
     root to: 'homes#top'
     get '/about' => 'homes#about'
   end

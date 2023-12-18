@@ -1,0 +1,14 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-10">
+      <% @stores.each do |store| %>
+        <%= image_tag store.get_image %>
+        <h6><strong><%= store.name %></strong></h6>
+        <p><%= store.address %></p>
+        <p><%= store.email %></p>
+        <p><%= store.telephone_number %></p>
+      <% end %>
+    </div>
+  </div>
+</div>
+<%= paginate @store %>

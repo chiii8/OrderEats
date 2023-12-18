@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-10">
+      <h4>
+        <strong><%= @store.name %></strong>
+      </h4>
+      <%= form_with model: @store, url: store_store_path(@store) do |f| %>
+      <table class="table table-borderless">
+        <tbody>
+          <tr>
+            <td>店舗ID</td>
+            <td><%= @store.id %></td>
+          </tr>
+          <tr>
+            <td>店舗名</td>
+            <td><%= f.text_field :name %></td>
+          </tr>
+          <tr>
+            <td>住所</td>
+            <td><%= f.text_field :address, size: 50 %></td>
+          </tr>
+          <tr>
+            <td>メールアドレス</td>
+            <td><%= f.email_field :email %></td>
+          </tr>
+          <tr>
+            <td>電話番号</td>
+            <td><%= f.text_field :telephone_number %></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>
+              <div class="action">
+                <%= f.submit "変更を保存", class: 'btn btn-success pl-5 pr-5' %>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <% end %>
+    </div>
+  </div>
+</div>
