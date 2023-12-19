@@ -2,6 +2,7 @@ class Public::ItemsController < ApplicationController
   
   def index
     @items = Item.page(params[:page])
+    @store = Store.find(params[:store_id])
   end
   
   def show
@@ -12,6 +13,6 @@ class Public::ItemsController < ApplicationController
   private
   
   def item_params
-    params.require(:item).permit(:name, :introduction, :price, :image, :is_active)
+    params.require(:item).permit(:name, :introduction, :price, :image, :is_active, :store_id)
   end
 end

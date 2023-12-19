@@ -27,7 +27,7 @@ Rails.application.routes.draw do
   end
   # 顧客側
   scope module: :public do
-    resources :stores, only: [:index, :show] do
+    resources :stores, only: [:index] do
       resources :items, only: [:index, :show]
     end
     resources :customers, only: [:update]

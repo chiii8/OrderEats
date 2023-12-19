@@ -1,14 +1,16 @@
 <div class="container">
   <div class="row">
-    <div class="col-lg-10">
+    <div class="offset-2 col-lg-8">
       <% @stores.each do |store| %>
-        <%= image_tag store.get_image %>
-        <h6><strong><%= store.name %></strong></h6>
-        <p><%= store.address %></p>
-        <p><%= store.email %></p>
-        <p><%= store.telephone_number %></p>
+      <%= link_to store_items_path(store) do %>
+        <%= image_tag store.get_image(300, 300) %>
+      <% end %>
+        <div class="border-line">
+          <hr class="hr1">
+        </div>
+        <h6><strong><%= store.name %></strong> <%= store.address %></h6>
       <% end %>
     </div>
   </div>
 </div>
-<%= paginate @store %>
+<%= paginate @stores %>
