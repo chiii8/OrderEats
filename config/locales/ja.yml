@@ -5,6 +5,11 @@ ja:
         male: "男性"
         female: "女性"
         no_answer: "無回答"
+  enums:
+    order:
+      payment_method:
+        credit_card: "クレジットカード"
+        cash: "現金払い"
   activerecord:
     errors:
       messages:
