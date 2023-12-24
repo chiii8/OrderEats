@@ -1,11 +1,11 @@
 class Store::StoresController < ApplicationController
   
   def show
-    @store = current_store
+    @store = Store.find(params[:id])
   end
   
   def edit
-    @store = current_store
+    @store = Store.find(params[:id])
   end
   
   private

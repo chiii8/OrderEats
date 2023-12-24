@@ -1,7 +1,8 @@
 class Public::ItemsController < ApplicationController
   
   def index
-    @items = Item.page(params[:page])
+    # @q = Item.ransack(params[:q])
+    @items = @search.result(distinct: true)
     @store = Store.find(params[:store_id])
   end
   

@@ -38,12 +38,12 @@ Rails.application.routes.draw do
       get 'customers/favorite' => 'customers#favorite', as: "favorite"
     resources :cart_items, except: [:show, :edit, :new]
       delete 'cart_items/destroy_all' => 'cart_items#destroy_all'
-    resources :orders, only: [:new, :index, :show, :create]
-      post 'orders/confirm' => 'orders#confirm', as: "confirm"
-      get 'orders/thanks' => 'orders#thanks'
-      get 'orders/possible' => 'orders#possible', as: "possible"
-      get 'orders/production' => 'orders#production', as: "prodction"
-      get 'orders/review' => 'orders#review', as: "review"
+    get 'orders/thanks' => 'orders#thanks'
+    post 'orders/confirm' => 'orders#confirm', as: "confirm"
+    get 'orders/possible' => 'orders#possible', as: "possible"
+    get 'orders/production' => 'orders#production', as: "prodction"
+    get 'orders/review' => 'orders#review', as: "review"
+    resources :orders, except: [:edit, :update, :destroy]
     root to: 'homes#top'
     get '/about' => 'homes#about'
   end
