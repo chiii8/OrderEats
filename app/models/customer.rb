@@ -6,6 +6,7 @@ class Customer < ApplicationRecord
          
   has_many :orders, dependent: :destroy
   has_many :cart_items, dependent: :destroy
+  has_many :favorite, dependent: :destroy
   
   enum gender: { male: 0, female: 1, no_answer: 2}
   

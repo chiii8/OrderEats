@@ -28,7 +28,10 @@ Rails.application.routes.draw do
   # 顧客側
   scope module: :public do
     resources :stores, only: [:index] do
-      resources :items, only: [:index, :show]
+      resource :favorite, only: [:create, :destroy]
+      resources :items, only: [:index, :show] do
+        resource :favorite, only: [:create, :destroy]
+      end
     end
     resources :customers, only: [:update]
       get '/customers/withdraw_confirm' => 'customers#withdraw_confirm', as: "withdraw_confirm"

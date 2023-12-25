@@ -8,6 +8,7 @@ class Store::ItemsController < ApplicationController
   
   def new
     @item = Item.new
+    @store = current_store
   end
   
   def create

@@ -1,9 +1,8 @@
 class Public::ItemsController < ApplicationController
   
   def index
-    # @q = Item.ransack(params[:q])
-    @items = @search.result(distinct: true)
     @store = Store.find(params[:store_id])
+    @items = @store.items
   end
   
   def show

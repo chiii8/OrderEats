@@ -4,7 +4,7 @@
       <h4 class="text-center">商品新規登録</h4>
     </div>
     <div class="col-md-6 offset-3">
-    <%= form_with model: @item, url: store_store_items_path do |f| %>
+    <%= form_with model: [@store, @item], url: store_store_items_path do |f| %>
     <table class="table table-borderless">
       <tbody>
         <tr>
