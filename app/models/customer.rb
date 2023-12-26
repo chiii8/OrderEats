@@ -6,11 +6,15 @@ class Customer < ApplicationRecord
          
   has_many :orders, dependent: :destroy
   has_many :cart_items, dependent: :destroy
-  has_many :favorite, dependent: :destroy
+  has_many :favorites, dependent: :destroy
   
   enum gender: { male: 0, female: 1, no_answer: 2}
   
   def active_for_authentication?
     super && (is_active == true ) # 有効でないとログインできない
+  end
+  
+  def favorited_by?(item)
+    favorites.exists?(item_id: item.id)
   end
 end

@@ -6,6 +6,7 @@ class Public::ItemsController < ApplicationController
   end
   
   def show
+    @store = Store.find(params[:store_id])
     @item = Item.find(params[:id])
     @cart_item = CartItem.new
   end
