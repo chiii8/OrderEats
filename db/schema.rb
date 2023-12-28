@@ -82,7 +82,6 @@ ActiveRecord::Schema.define(version: 2023_12_14_122906) do
 
   create_table "favorites", force: :cascade do |t|
     t.integer "customer_id"
-    t.integer "item_id"
     t.integer "store_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

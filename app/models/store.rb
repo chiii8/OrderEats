@@ -6,7 +6,7 @@ class Store < ApplicationRecord
          
   has_many :items, dependent: :destroy
   has_many :favorites, dependent: :destroy
-   has_one_attached :image
+  has_one_attached :image
    
   def get_image(width, height)
     unless image.attached?
@@ -14,5 +14,9 @@ class Store < ApplicationRecord
       image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
     end
     image.variant(resize_to_limit: [width, height]).processed
+  end
+  
+  def favorited_by?(current_customer)
+    favorites.exists?(customer_id: current_customer.id)
   end
 end

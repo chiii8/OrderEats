@@ -29,16 +29,17 @@ Rails.application.routes.draw do
   scope module: :public do
     resources :stores, only: [:index] do
       resource :favorite, only: [:create, :destroy]
-      resources :items, only: [:index, :show] do
-        resource :favorite, only: [:create, :destroy]
+      resources :items, only: [:index, :show]
+    end
+    resources :customers, only: [:update, :show, :edit] do
+      member do
+        get :favorites
       end
     end
-    resources :customers, only: [:update]
       get '/customers/withdraw_confirm' => 'customers#withdraw_confirm', as: "withdraw_confirm"
       patch '/customers/withdraw' => 'customers#withdraw'
       get '/customers/mypage' => 'customers#show'
       get 'customers/infomation/edit' => 'customers#edit'
-      get 'customers/favorite' => 'customers#favorite', as: "favorite"
     resources :cart_items, except: [:show, :edit, :new]
       delete 'cart_items/destroy_all' => 'cart_items#destroy_all'
     get 'orders/thanks' => 'orders#thanks'

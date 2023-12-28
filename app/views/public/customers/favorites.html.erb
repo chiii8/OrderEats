@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="row">
+    <div class="text-center col-lg-2">
+      <h6><strong>お気に入り店舗</strong></h6>
+    </div>
+    <div class="col-lg-6">
+      <% @favorite_stores.each do |store| %>
+        <%= link_to store_items_path(store) do %>
+          <%= image_tag store.get_image(300, 300) %>
+        <% end %>
+        <div class="border-line">
+          <hr class="hr1">
+        </div>
+        <h6><strong><%= store.name %></strong> <%= store.address %></h6>
+      <% end %>
+    </div>
+  </div>
+</div>

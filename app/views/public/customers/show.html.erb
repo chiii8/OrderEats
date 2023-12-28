@@ -1,0 +1,25 @@
+<div class="container mt-2">
+  <div class="row">
+    <div class="col-lg-3">
+      <h6><strong>マイページ</strong></h6>
+      <div class="rounded-circle">
+        <%= image_tag @customer.get_profile_image(150, 150), class: 'mt-5' %>
+      </div>
+    </div>
+    <div class="col-lg-7">
+      <br>
+      <br>
+      <br>
+      <br>
+      <h4 class="mb-5"><strong><%= @customer.full_name %></strong></h4>
+      <div class="btn-toolber">
+        <div>
+          <%= link_to favorites_customer_path(@customer), class: 'btn btn-secondary rounded-circle p-5 width:3rem;height:3rem;' do %>
+            <i class="fa-solid fa-heart-circle-check"></i>
+          <% end %>
+          <p class="mt-2">お気に入り</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
