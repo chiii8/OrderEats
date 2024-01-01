@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_12_30_064644) do
+ActiveRecord::Schema.define(version: 2024_01_01_124611) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -113,9 +113,19 @@ ActiveRecord::Schema.define(version: 2023_12_30_064644) do
     t.integer "fee", null: false
     t.integer "payment_method", default: 0, null: false
     t.integer "payment_amount", null: false
+    t.string "number"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "number"
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.integer "rating"
+    t.integer "customer_id", null: false
+    t.integer "order_detail_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["customer_id"], name: "index_reviews_on_customer_id"
+    t.index ["order_detail_id"], name: "index_reviews_on_order_detail_id"
   end
 
   create_table "stores", force: :cascade do |t|
@@ -137,4 +147,6 @@ ActiveRecord::Schema.define(version: 2023_12_30_064644) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "items", "stores"
+  add_foreign_key "reviews", "customers"
+  add_foreign_key "reviews", "order_details"
 end
