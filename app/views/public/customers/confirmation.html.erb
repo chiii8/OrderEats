@@ -1,0 +1,50 @@
+<div class="container">
+  <div class="row">
+    <div class="col text-center mt-4">
+      <h4><strong>アカウント情報</strong></h4>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-3 offset-3 mt-3">
+      <div class="rounded-circle">
+        <%= image_tag @customer.get_profile_image(150, 150), class: 'mt-5' %>
+      </div>
+    </div>
+    <div class="col-lg-4 mt-5">
+      <table class="table table-borderless">
+        <tbody>
+          <tr>
+            <td>氏名</td>
+            <td><%= @customer.full_name %></td>
+          </tr>
+          <tr>
+            <td>フリガナ</td>
+            <td><%= @customer.full_name_kana %></td>
+          </tr>
+          <tr>
+            <td>メールアドレス</td>
+            <td><%= @customer.email %></td>
+          </tr>
+          <tr>
+            <td>電話番号</td>
+            <td><%= @customer.telephone_number %></td>
+          </tr>
+          <tr>
+            <td>性別</td>
+            <td><%= @customer.gender_i18n %></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="col-lg-7 offset-3">
+    <div class="border-line">
+      <hr class="hr1">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col text-center">
+      <%= link_to "個人情報編集", infomation_path(@customer), class: 'btn btn-success pl-5 pr-5 mt-5' %>
+    </div>
+  </div>
+</div>

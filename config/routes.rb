@@ -31,15 +31,16 @@ Rails.application.routes.draw do
       resource :favorite, only: [:create, :destroy]
       resources :items, only: [:index, :show]
     end
-    resources :customers, only: [:update, :show, :edit] do
+    resources :customers, only: [:update] do
       member do
         get :favorites
       end
     end
       get '/customers/withdraw_confirm' => 'customers#withdraw_confirm', as: "withdraw_confirm"
       patch '/customers/withdraw' => 'customers#withdraw'
-      get '/customers/mypage' => 'customers#show'
-      get 'customers/infomation/edit' => 'customers#edit'
+      get '/customers/mypage' => 'customers#show', as: "mypage"
+      get '/customers/confirmation' => 'customers#confirmation', as: 'confirmation'
+      get 'customers/infomation/edit' => 'customers#edit', as: "infomation"
     resources :cart_items, except: [:show, :edit, :new]
       delete 'cart_items/destroy_all' => 'cart_items#destroy_all'
     get 'orders/thanks' => 'orders#thanks'

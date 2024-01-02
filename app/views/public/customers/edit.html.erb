@@ -1,0 +1,77 @@
+<div class="container">
+  <div class="row">
+    <div class="col text-center">
+      <h6><strong>会員情報編集</strong></h6>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-8 offset-2 mt-5">
+      <%= form_with model: @customer, method: :patch do |f| %>
+        
+          <table class="table table-borderless">
+            <tbody>
+              <tr>
+                <td>名前</td>
+                <td>
+                  <%= f.text_field :last_name, :placeholder => "姓" %> <%= f.text_field :first_name, :placeholder => "名" %>
+                </td>
+              </tr>
+              <tr>
+                <td>フリガナ</td>
+                <td>
+                  <%= f.text_field :last_name_kana, :placeholder => "セイ" %> <%= f.text_field :first_name_kana, :placeholder => "メイ" %>
+                </td>
+              </tr>
+              <tr>
+                <td>メールアドレス</td>
+                <td>
+                  <%= f.email_field :email, autofocus: true, autocomplete: "email", size: 43, :placeholder => "aaa@gmail.com" %>
+                </td>
+              </tr>
+              <tr>
+                <td>電話番号</td>
+                <td>
+                  <%= f.text_field :telephone_number, size: 30, :placeholder => "00000000000" %>
+                </td>
+              </tr>
+              <tr>
+                <td>性別</td>
+                <td>
+                  <%= f.radio_button :gender, Customer.genders.key(0) %>
+                  <%= f.label "男性", class: 'mr-3' %>
+                  <%= f.radio_button :gender, Customer.genders.key(1) %>
+                  <%= f.label "女性", class: 'mr-3' %>
+                  <%= f.radio_button :gender, Customer.genders.key(2) %>
+                  <%= f.label "無回答" %>
+                </td>
+              </tr>
+              <tr>
+                <td>パスワード</td>
+                <td>
+                  <%= f.password_field :password, size: 30, :placeholder => "パスワード(６文字以上)" %>
+                </td>
+              </tr>
+              <tr>
+                <td>パスワード(確認用)</td>
+                <td>
+                  <%= f.password_field :password_confimation, size: 30, :placeholder => "パスワード(確認用)" %>
+                </td>
+              </tr>
+              <tr>
+                <td></td>
+                <td><%= f.submit "個人情報を更新", class: 'btn btn-success pl-5 pr-5 pt-1 pb-1' %></td>
+              </tr>
+            </tbody>
+          </table>
+      <% end %>
+      <div class="border-line">
+        <hr class="hr1">
+      </div>
+      <div class="link mt-4 text-center">
+        <span style="font-size:15px;">
+          アカウントを削除する方は、<%= link_to "こちら", withdraw_confirm_path, class: 'text-danger' %>から
+        </span>
+      </div>
+    </div>
+  </div>
+</div>

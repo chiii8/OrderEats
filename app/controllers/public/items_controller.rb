@@ -1,4 +1,5 @@
 class Public::ItemsController < ApplicationController
+  before_action :authenticate_customer!, except: [:index]
   
   def index
     @store = Store.find(params[:store_id])

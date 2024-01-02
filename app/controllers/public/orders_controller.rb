@@ -13,27 +13,34 @@ class Public::OrdersController < ApplicationController
   end
   
   def create
+    # 注文を作成
     @order = Order.new(order_params)
     @order.customer_id = current_customer.id
     @order.save
-    
+    # 注文番号を設定
+    next_order_number = Order.maximum(:number).to_i + 1
+    @order.number = "M#{next_order_number}"
+    @order.save
+    #注文詳細を作成
     current_customer.cart_items.each do |cart_item|
       @order_details = OrderDetail.new
       @order_details.item_id = cart_item.item.id
       @order_details.quantity = cart_item.quantity
       @order_details.payment_amount = cart_item.item.with_tax_price
       @order_details.order_id = @order.id
+      @order_details.number = @order.number
       @order_details.save
     end
     
     current_customer.cart_items.destroy_all
-    redirect_to orders_thanks_path
-  end
-  
-  def thanks
+    redirect_to orders_possible_path(order_id: @order.id)
   end
   
   def possible
+    @order = Order.find(params[:order_id])
+  end
+  
+  def thanks
   end
   
   private

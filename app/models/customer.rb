@@ -10,7 +10,7 @@ class Customer < ApplicationRecord
   has_many :reviews, dependent: :destroy
   has_one_attached :profile_image
   
-  enum gender: { male: 0, female: 1, no_answer: 2}
+  enum gender: { male: 0, female: 1, no_answer: 2 }
   
   def active_for_authentication?
     super && (is_active == true ) # 有効でないとログインできない
@@ -26,5 +26,9 @@ class Customer < ApplicationRecord
   
   def full_name
     last_name + first_name
+  end
+  
+  def full_name_kana
+    last_name_kana + first_name_kana
   end
 end
