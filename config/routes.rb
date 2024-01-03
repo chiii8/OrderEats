@@ -50,6 +50,5 @@ Rails.application.routes.draw do
     get 'orders/review' => 'orders#review', as: "review"
     resources :orders, except: [:edit, :update, :destroy]
     root to: 'homes#top'
-    get '/about' => 'homes#about'
   end
 end

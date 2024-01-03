@@ -13,4 +13,10 @@
  *= require_tree .
  *= require_self
  */
+ body {
+   font-family: monospace;
+ }
  
+ .btn-header {
+   background-color: #00bb85;
+ }
