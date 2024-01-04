@@ -11,6 +11,10 @@ Rails.application.routes.draw do
       registrations: "public/registrations",
       sessions: "public/sessions"
     }
+  # guest login
+  devise_scope :customer do
+    post "customers/guest_sign_in", to: "public/sessions#guest_sign_in"
+  end
   # 店舗側
   namespace :store do
     resources :stores do
