@@ -11,7 +11,7 @@ class Public::SessionsController < Devise::SessionsController
   def guest_sign_in
     customer = Customer.guest
     sign_in customer
-    falsh[:notice] = "ゲストログインしました。"
+    flash[:notice] = "ゲストログインしました。"
     redirect_to root_path
   end
   # GET /resource/sign_in
