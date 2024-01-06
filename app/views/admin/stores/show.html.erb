@@ -17,7 +17,16 @@
             <td><%= @store.name %></td>
           </tr>
           <tr>
-            <td></td>
+            <td>店舗写真</td>
+            <td><%= @store.get_image %></td>
+          </tr>
+          <tr>
+            <td>電話番号</td>
+            <td><%= @store.telephone_number %></td>
+          </tr>
+          <tr>
+            <td>住所</td>
+            <td><%= @store.address %></td>
           </tr>
         </tbody>
       </table>

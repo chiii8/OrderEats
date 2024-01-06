@@ -33,7 +33,7 @@ class Public::OrdersController < ApplicationController
     end
     
     current_customer.cart_items.destroy_all
-    redirect_to orders_possible_path(order_id: @order.id)
+    redirect_to possible_path(order_id: @order.id)
   end
   
   def possible

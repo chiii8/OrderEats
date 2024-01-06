@@ -34,7 +34,7 @@
             </td>
           </tr>
           <tr class="border-top">
-            <td><strong>金額</strong></td>
+            <td><strong>商品合計</strong></td>
             <td>
               <strong>¥<%= cart_item.subtotal %></strong>
               <% @total = @total + cart_item.subtotal %>
@@ -45,9 +45,9 @@
       </table>
     </div>
     <div class="col-lg-4">
-      <table class="table bordered">
+      <table class="table table-borderless">
         <tbody>
-          <tr>
+          <tr class="border-bottom">
             <td>合計金額</td>
             <td><%= @total %></td>
           </tr>
@@ -57,7 +57,7 @@
                 <!-- カートが空の場合の表示 -->
                 <%= render 'empty_cart_message' %>
               <% else %>
-                <%= link_to "ご注文手続きへ進む >", new_order_path, class: 'btn btn-dark col-md-2 btn-sm' %>
+                <%= link_to "ご注文手続きへ進む >", new_order_path, class: 'btn btn-dark btn-sm pr-5 pl-5' %>
               <% end %>
             </td>
           </tr>

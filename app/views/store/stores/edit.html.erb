@@ -1,11 +1,14 @@
 <div class="container">
   <div class="row">
-    <div class="col-lg-10 offset-1">
+    <div class="col-lg-12">
       <h4 class="text-center">
         <strong><%= @store.name %></strong>
       </h4>
+    </div>
+    <div class="col-lg-8 offset-2">
+      <hr class="hr">
       <%= form_with model: @store, url: store_store_path(@store) do |f| %>
-      <table class="table table-borderless">
+      <table class="table table-borderless offset-2">
         <tbody>
           <tr>
             <td>店舗ID</td>
@@ -21,7 +24,7 @@
           </tr>
           <tr>
             <td>住所</td>
-            <td><%= f.text_field :address, size: 50 %></td>
+            <td><%= f.text_field :address, size: 40 %></td>
           </tr>
           <tr>
             <td>メールアドレス</td>
@@ -31,16 +34,13 @@
             <td>電話番号</td>
             <td><%= f.text_field :telephone_number %></td>
           </tr>
-          <tr>
-            <td></td>
-            <td>
-              <div class="action">
-                <%= f.submit "変更を保存", class: 'btn btn-success pl-5 pr-5' %>
-              </div>
-            </td>
-          </tr>
         </tbody>
       </table>
+      <div class="col-lg-6 offset-3">
+        <div class="action">
+          <%= f.submit "変更を保存", class: 'btn btn-block btn-success mt-5' %>
+        </div>
+      </div>
       <% end %>
     </div>
   </div>
