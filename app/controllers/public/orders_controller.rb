@@ -16,6 +16,7 @@ class Public::OrdersController < ApplicationController
     # 注文を作成
     @order = Order.new(order_params)
     @order.customer_id = current_customer.id
+    ＠order.store_name = params[:order][:store_name]
     @order.save
     # 注文番号を設定
     next_order_number = Order.maximum(:number).to_i + 1
@@ -34,6 +35,10 @@ class Public::OrdersController < ApplicationController
     
     current_customer.cart_items.destroy_all
     redirect_to possible_path(order_id: @order.id)
+  end
+  
+  def index
+    @orders = current_customer.orders.all
   end
   
   def possible

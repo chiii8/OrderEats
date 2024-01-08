@@ -28,6 +28,7 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :stores, only: [:index, :show, :create]
     get '/', to: 'admin/home#top'
+    resources :customers, only: [:index, :show, :edit, :update]
   end
   # 顧客側
   scope module: :public do

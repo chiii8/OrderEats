@@ -4,6 +4,9 @@
       <h4><strong>
         <%= @store.name %> 店舗詳細
       </strong></h4>
+      <div class="image">
+        <%= @store.get_image(300, 300) %>
+      </div>
     </div>
     <div class="col-lg-8">
       <table class="table table-borderless">
@@ -15,10 +18,6 @@
           <tr>
             <td>店舗名</td>
             <td><%= @store.name %></td>
-          </tr>
-          <tr>
-            <td>店舗写真</td>
-            <td><%= @store.get_image %></td>
           </tr>
           <tr>
             <td>電話番号</td>

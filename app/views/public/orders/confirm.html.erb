@@ -51,6 +51,7 @@
           <%= f.hidden_field :fee %>
           <%= f.hidden_field :payment_amount, value: @total + @order.fee %>
           <%= f.hidden_field :payment_method %>
+          <%= f.hidden_field :store_name %>
           <%= f.submit "注文を確定する", class: 'btn btn-success shodow-sm btn-sm pr-5 pl-5' %>
         <% end %>
       </div>
