@@ -1,21 +1,11 @@
 <div class="container">
-  <div clasas="row">
-    <div class="col-lg-10 offset-1 text-center">
-      <h4><storng>
-        ご注文ありがとうございました。<br>
-        注文番号はこちらです。モニターに表示、または呼ばれましたら、受付にてお越しください。
-      </storng>
-      </h4>
-      <br>
-      <br>
-      <br>
-      <h1 class="text-center"><strong><%= @order.number %></strong></h1>
-      <br>
-      <br>
-      <br>
-      <br>
-      <p>商品を受け取りましたら、受取完了ボタンを押してください。</p>
-      <%= link_to "商品を受け取りました", review_path, class: 'btn btn-success' %>
+  <div class="row">
+    <div class="col-lg-12 text-center mt-5">
+      <h3><strong>またのご利用をお待ちしております。</strong></h3>
+      <h5 class="text-success mt-5"><strong>Thank you again for OrderEats.</strong></h5>
+    </div>
+    <div class="col-lg-4 offset-4">
+      <%= link_to "トップに戻る", root_path, class: 'btn btn-block btn-secondary mt-5' %>
     </div>
   </div>
 </div>

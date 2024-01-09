@@ -16,10 +16,10 @@ class Public::OrdersController < ApplicationController
     # 注文を作成
     @order = Order.new(order_params)
     @order.customer_id = current_customer.id
-    ＠order.store_name = params[:order][:store_name]
+    #@order.store_name = params[:order][:store_name]
     @order.save
     # 注文番号を設定
-    next_order_number = Order.maximum(:number).to_i + 1
+    next_order_number = Order.maximum(:number).to_s + 1
     @order.number = "M#{next_order_number}"
     @order.save
     #注文詳細を作成

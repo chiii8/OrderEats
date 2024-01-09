@@ -3,7 +3,7 @@ class Public::ItemsController < ApplicationController
   
   def index
     @store = Store.find(params[:store_id])
-    @items = @store.items
+    @items = Item.where(is_active: 1).page(params[:page]).per(8)
   end
   
   def show

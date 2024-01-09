@@ -2,13 +2,12 @@ class Store::ItemsController < ApplicationController
   before_action :authenticate_store!
   
   def index
-    @items = Item.page(params[:page])
     @store = current_store
+    @items = @store.items
   end
   
   def new
     @item = Item.new
-    @store = current_store
   end
   
   def create
