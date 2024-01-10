@@ -5,12 +5,33 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-lg-12">
-      <% @orders.each do |order| %>
-        <div class="col-lg-3">
-          <%= order.store.get_image(150, 150) %>
-        </div>
-      <% end %>
+    <div class="col-lg-8">
+      <table class="table table-borderless">
+        <% @orders.each do |order| %>
+          <tbody>
+            <tr>
+              <td rowspan="2">
+              <% order.order_details.each do |order_detail| %>
+                <%= order_detail.item.store.name %>
+              <% end %>
+              </td>
+              <td class="text-secondary" style="font-size:13px">
+                <% order.order_details.each do |order_detail| %>
+                <%= order.created_at.strftime('%Y/%m/%d') %>
+                ¥<%= order_detail.payment_amount %>
+                <%= order.payment_method_i18n %>で支払済み
+              </td>
+            </tr>
+            <tr class="border-bottom">
+              <td>
+                <%= order_detail.quantity %>点
+              </td>
+              <td><%= order_detail.item.name %></td>
+              <% end %>
+            </tr>
+          </tbody>
+        <% end %>
+      </table>
     </div>
   </div>
 </div>
