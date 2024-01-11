@@ -20,3 +20,13 @@
  .btn-header {
    background-color: #00bb85;
  }
+ 
+ .border1 {
+  padding-left: 5px;
+  padding-right: 5px;
+  margin-right: 5px;
+ }
+ 
+ .bb1 tr {
+  border-bottom: 2px solid #d3d3d3;
+ }

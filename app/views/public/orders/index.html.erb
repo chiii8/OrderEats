@@ -1,33 +1,29 @@
 <div class="container">
   <div class="row">
-    <div class="col-lg-4 offset-4 text-center">
-      <h4 class="mb-4">ご注文内容</h4>
+    <div class="col-lg-2 text-center">
+      <h3 class="mb-4">ご注文内容</h3>
     </div>
   </div>
   <div class="row">
     <div class="col-lg-8">
       <table class="table table-borderless">
         <% @orders.each do |order| %>
-          <tbody>
+          <tbody class="border-bottom">
             <tr>
-              <td rowspan="2">
-              <% order.order_details.each do |order_detail| %>
-                <%= order_detail.item.store.name %>
-              <% end %>
-              </td>
-              <td class="text-secondary" style="font-size:13px">
-                <% order.order_details.each do |order_detail| %>
-                <%= order.created_at.strftime('%Y/%m/%d') %>
-                ¥<%= order_detail.payment_amount %>
-                <%= order.payment_method_i18n %>で支払済み
-              </td>
+              <td rowspan="1"><%= order.created_at.strftime('%Y/%m/%d') %></td>
+              <td class="text-secondary" style="font-size:13px;"><%= order.payment_method_i18n %>で支払済み</td>
+              <td class="text-secondary" style="font-size:13px;">手数料¥<%= order.fee %></td>
             </tr>
-            <tr class="border-bottom">
+            <tr>
               <td>
-                <%= order_detail.quantity %>点
               </td>
-              <td><%= order_detail.item.name %></td>
-              <% end %>
+              <td>
+                <% order.order_details.each do |order_detail| %>
+                  <span class="border1" style="border: solid thin #d3d3d3"><%= order_detail.quantity %></span>
+                  <%= order_detail.item.name %><br>
+                <% end %>
+              </td>
+              <td style="font-size: 18px;">¥<%= order.payment_amount %></td>
             </tr>
           </tbody>
         <% end %>

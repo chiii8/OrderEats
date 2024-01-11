@@ -29,6 +29,7 @@ Rails.application.routes.draw do
     resources :stores, only: [:index, :show, :create]
     get '/', to: 'admin/home#top'
     resources :customers, only: [:index, :show, :edit, :update]
+    resources :orders, only: [:index, :show, :update]
   end
   # 顧客側
   scope module: :public do

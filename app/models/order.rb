@@ -12,4 +12,8 @@ class Order < ApplicationRecord
     end
     image.variant(resize_to_limit: [width, height]).processed
   end
+  
+  def subtotal
+    payment_amount - fee
+  end
 end
