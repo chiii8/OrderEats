@@ -21,9 +21,6 @@
                         aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
-          <!-- <div class="header_search">
-            
-          </div>-->
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav ml-auto">
               <% if customer_signed_in? %>
@@ -36,6 +33,9 @@
                 <%= render 'layouts/header_before' %>
               <% end %>
             </ul>
+          </div>
+          <div class="header_search">
+            <%= render 'layouts/search' %>
           </div>
         </div>
       </nav>

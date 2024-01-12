@@ -23,6 +23,7 @@ Rails.application.routes.draw do
     resources :orders, only: [:show, :update]
     resources :order_details, only: [:update]
     resources :customers, only: [:index, :show, :edit, :update]
+    get "search" => "searches#search"
   end
   # 管理者側
   namespace :admin do
@@ -30,6 +31,7 @@ Rails.application.routes.draw do
     get '/', to: 'admin/home#top'
     resources :customers, only: [:index, :show, :edit, :update]
     resources :orders, only: [:index, :show, :update]
+    get "search" => "searches#search"
   end
   # 顧客側
   scope module: :public do
@@ -56,5 +58,6 @@ Rails.application.routes.draw do
     get 'orders/review' => 'orders#review', as: "review"
     resources :orders, except: [:edit, :update, :destroy]
     root to: 'homes#top'
+    get "search" => "searches#search"
   end
 end
