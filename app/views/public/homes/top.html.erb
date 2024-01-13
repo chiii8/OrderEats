@@ -1,9 +1,9 @@
 <div class="container ">
   <div class="row">
-    <div class="offset-3 col-lg-6">
+    <div class="offset-3 col-lg-6 mb-5 mt-5">
       <% @stores.each do |store| %>
         <%= link_to store_items_path(store) do %>
-          <%= image_tag store.get_image(500, 300), class: 'rounded' %>
+          <%= image_tag store.get_image(500, 300), class: 'rounded store-img' %>
         <% end %>
         <% if customer_signed_in? %>
           <% if store.favorited_by?(current_customer) %>
@@ -19,7 +19,9 @@
         <div class="border-line">
           <hr class="hr1">
         </div>
-        <h6><strong><%= store.name %></strong> <%= store.address %></h6>
+        <div class="mb-5">
+          <h6><strong><%= store.name %></strong> <%= store.address %></h6>
+        </div>
       <% end %>
     </div>
   </div>

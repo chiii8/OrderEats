@@ -30,3 +30,15 @@
  .bb1 tr {
   border-bottom: 2px solid #d3d3d3;
  }
+ 
+ .item-img {
+  width: 100%;
+  height: 120px;
+  background-size: cover;
+  border: 5px solid #cccccc;
+ }
+ 
+ .store-img {
+  width: 100%;
+  height: auto;
+ }
