@@ -1,4 +1,5 @@
 class Public::StoresController < ApplicationController
+  before_action :authenticate_customer!, except: [:index]
   
   def index
     @stores = Store.page(params[:page])

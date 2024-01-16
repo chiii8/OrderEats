@@ -1,5 +1,6 @@
 class Store::ItemsController < ApplicationController
   before_action :authenticate_store!
+  before_action :set_item, only: [:show, :edit, :update]
   
   def index
     @store = current_store
@@ -22,17 +23,14 @@ class Store::ItemsController < ApplicationController
   end
   
   def show
-    @item = Item.find(params[:id])
     @store = current_store
   end
   
   def edit
-    @item = Item.find(params[:id])
     @store = current_store
   end
   
   def update
-    @item = Item.find(params[:id])
     if @item.update(item_params)
       flash[:notice] = "メニューを編集しました。"
       redirect_to store_store_items_path
@@ -45,5 +43,9 @@ class Store::ItemsController < ApplicationController
   
   def item_params
     params.require(:item).permit(:name, :introduction, :price, :is_active, :image)
+  end
+  
+  def set_item
+    @item = Item.find(params[:id])
   end
 end

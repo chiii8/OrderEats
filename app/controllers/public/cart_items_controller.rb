@@ -3,7 +3,6 @@ class Public::CartItemsController < ApplicationController
   
   def index
     @cart_items = current_customer.cart_items
-    # @store = Store.find(params[:id])
     @total = 0
   end
   

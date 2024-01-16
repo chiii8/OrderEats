@@ -1,4 +1,5 @@
 class Admin::StoresController < ApplicationController
+  before_action :authenticate_admin!
   
   def index
     @stores = Store.page(params[:page])
