@@ -45,10 +45,12 @@ class Customer < ApplicationRecord
     end
   end
   
-  validates :last_name, presence: true
-  validates :first_name, presence: true
-  validates :last_name_kana, presence: true
-  validates :first_name_kana, presence: true
-  validates :telephone_number, presence: true
-  validates :gender, presence: true
+  with_options presence: true do
+    validates :last_name, format: { with: /\A[一-龥]+\z/ }
+    validates :first_name, format: { with: /\A[一-龥]+\z/ }
+    validates :kast_name_kana, format: { with: /\A[ァ-ヶー－]+\z/ }
+    validates :first_name_kana, format: { with: /\A[ァ-ヶー－]+\z/ }
+    validates :telephone_number, format: { with: /\A\d{10,11}\z/ }
+    validates :gender
+  end
 end

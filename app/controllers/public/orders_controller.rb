@@ -19,8 +19,12 @@ class Public::OrdersController < ApplicationController
     #@order.store_name = params[:order][:store_name]
     @order.save
     # 注文番号を設定
-    next_order_number = Order.maximum(:number).to_i + 1
-    @order.number = "M#{next_order_number}"
+    number = Order.maximum(:number)
+    if number.nil?
+      @order.number = "M1"
+    else
+      @order.number = "M#{number.to_i + 1}"
+    end
     @order.save
     #注文詳細を作成
     current_customer.cart_items.each do |cart_item|

@@ -23,4 +23,10 @@ class Store < ApplicationRecord
   def self.ransackable_attributes(auth_object = nil)
     ["address", "created_at", "email", "encrypted_password", "id", "introduction", "name", "remember_created_at", "reset_password_sent_at", "reset_password_token", "telephone_number", "updated_at"]
   end
+  
+  with_options presence: true do
+    validates :name
+    validates :address
+    validates :telephone_number
+  end
 end
